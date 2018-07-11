@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ApiWithAdfsAuth": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
