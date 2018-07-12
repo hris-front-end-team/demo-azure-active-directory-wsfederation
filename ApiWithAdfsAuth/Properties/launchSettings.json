@@ -2,6 +2,7 @@
   "profiles": {
     "ApiWithAdfsAuth": {
       "commandName": "Project",
+      "commandLineArgs": "VariantNameKey=Variant3",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace ApiWithAdfsAuth
 {
-    public sealed class CustomWsFederationEvents : WsFederationEvents
+    public class DebugWsFederationEvents : WsFederationEvents
     {
         public override Task RedirectToIdentityProvider(RedirectContext context)
         {

@@ -8,7 +8,15 @@ namespace ApiWithAdfsAuth
     [Route("demo")]
     public sealed class DemoController : Controller
     {
-        private string CurrentUTC => DateTime.UtcNow.ToLongTimeString() + " (UTC)";
+        private string CurrentUTC
+        {
+            get
+            {
+                var now = DateTime.UtcNow;
+                return now.ToString("ddd, dd MMM yyyy HH:mm:ss") + " (UTC ~ GMT)";
+            }
+        }
+
 
         [HttpGet("open-date-time")]
         public Task<string> OpenDateTime()
