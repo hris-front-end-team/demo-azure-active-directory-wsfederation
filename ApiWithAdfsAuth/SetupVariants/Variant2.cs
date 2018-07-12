@@ -38,7 +38,7 @@ namespace ApiWithAdfsAuth.SetupVariants
     {
         public override Task SecurityTokenValidated(SecurityTokenValidatedContext context)
         {
-            context.Response.Headers["STS_TOKEN_VALID_TO"] = context.SecurityToken.ValidTo.ToString("s", CultureInfo.InvariantCulture);
+            context.Response.Headers["STS_TOKEN_VALID_TO"] = context.SecurityToken.ValidTo.ToString("o", CultureInfo.InvariantCulture);
             return base.SecurityTokenValidated(context);
         }
     }
@@ -48,19 +48,8 @@ namespace ApiWithAdfsAuth.SetupVariants
         public override Task SigningIn(CookieSigningInContext context)
         {
             var stsTokenValidToText = context.Response.Headers["STS_TOKEN_VALID_TO"];
-            var restoredDateTime = DateTime.ParseExact(stsTokenValidToText, "s", CultureInfo.InvariantCulture);
-            var cookieExpirationDateTime = new DateTime(
-                restoredDateTime.Year,
-                restoredDateTime.Month,
-                restoredDateTime.Day,
-                restoredDateTime.Hour,
-                restoredDateTime.Minute,
-                restoredDateTime.Second,
-                restoredDateTime.Millisecond,
-                DateTimeKind.Utc
-            );
-
-            context.CookieOptions.Expires = new DateTimeOffset(cookieExpirationDateTime);
+            var stsTokenValidToDateTime = DateTime.ParseExact(stsTokenValidToText, "o", CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind);
+            context.CookieOptions.Expires = new DateTimeOffset(stsTokenValidToDateTime);
             return base.SigningIn(context);
         }
     }

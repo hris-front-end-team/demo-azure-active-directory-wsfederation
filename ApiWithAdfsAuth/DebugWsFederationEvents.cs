@@ -30,5 +30,20 @@ namespace ApiWithAdfsAuth
         {
             return base.RemoteSignOut(context);
         }
+
+        public override Task MessageReceived(MessageReceivedContext context)
+        {
+            return base.MessageReceived(context);
+        }
+
+        public override Task AuthenticationFailed(AuthenticationFailedContext context)
+        {
+            return base.AuthenticationFailed(context);
+        }
+
+        public override Task RemoteFailure(RemoteFailureContext context)
+        {
+            return base.RemoteFailure(context);
+        }
     }
 }

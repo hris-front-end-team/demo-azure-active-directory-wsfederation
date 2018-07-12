@@ -12,8 +12,7 @@ namespace ApiWithAdfsAuth
         {
             get
             {
-                var now = DateTime.UtcNow;
-                return now.ToString("ddd, dd MMM yyyy HH:mm:ss") + " (UTC ~ GMT)";
+                return Date.Format(DateTime.UtcNow);
             }
         }
 
