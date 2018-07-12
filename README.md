@@ -51,23 +51,31 @@ $ dotnet --version
 When a Web Service's API is invoked (from a web browser context) the following logic triggers:
 
 ```txt
-(I) Web browser makes an HTTP Request (often via XHR object) as configured in client code (HTTP Verb + URL + optional body). Domain/path related cookies (including Auth cookie) are included into the request's headers.
+(I) Web browser makes an HTTP Request (often via XHR object) as configured in client code (HTTP Verb + URL +
+    optional body). Domain/path related cookies (including Auth cookie) are included into the request's headers.
 
-(II) Web Service receives the request and based on the requested resource's confifguration determines whether authentication/authorization* is necessary.
+(II) Web Service receives the request and based on the requested resource's confifguration determines whether
+     authentication/authorization* is necessary.
 
-  (III) If auth is NOT needed, the service's API code gets executed and the result is returned in an HTTP Response.
+  (III) If auth is NOT needed, the service's API code gets executed and the result is returned in an
+        HTTP Response.
 
   (IV) If auth IS needed, the service will inspect the request for authentication cookie† presence.
 
     (V) If authentication cookie IS found, it's checked for expiration.
 
-      (VI) If authentication cookie has NOT expired‡, it the authorization logic kicks in (e.g. user's identity/role/claims are checked against requested resource access configuration).
+      (VI) If authentication cookie has NOT expired‡, it the authorization logic kicks in (e.g. user's
+           identity/role/claims are checked against requested resource access configuration).
 
-        (VII) If authorization rules ARE met, the service's API code gets executed and the result is returned in an HTTP Response.
+        (VII) If authorization rules ARE met, the service's API code gets executed and the result is returned
+              in an HTTP Response.
 
-        (VII) If authorization rules are NOT met, by default, HTTP 403 Forbidden Response is sent back, but things may vary -- alternatives will not be described here in detail.
+        (VII) If authorization rules are NOT met, by default, HTTP 403 Forbidden Response is sent back,
+              but things may vary -- alternatives will not be described here in detail.
 
-      (IX) If authentication cookie is NOT found or HAS expired, by default, the authentication flow triggers, after which a redirection to the requested resource will happen (now with the unexpired authentication cookie), and the flow continues with step (II).
+      (IX) If authentication cookie is NOT found or HAS expired, by default, the authentication flow triggers,
+           after which a redirection to the requested resource will happen (now with the unexpired authentication
+           cookie), and the flow continues with step (II).
 ```
 
 Authentication flow looks like this:
