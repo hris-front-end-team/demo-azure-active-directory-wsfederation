@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.WsFederation;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -23,7 +22,7 @@ namespace ApiWithAdfsAuth.SetupVariants
                 wsFederationOptions.MetadataAddress = "https://login.microsoftonline.com/7faaba4b-aa38-42a3-b558-30dfb3ab8262/federationmetadata/2007-06/federationmetadata.xml";
                 wsFederationOptions.Wtrealm = "https://soloydenkogmail.onmicrosoft.com/WebApp-WSFederation-DotNet";
 
-                wsFederationOptions.Events = new CookieWithSTSTokenMatchingAuthEventsWsFederationEvents();
+                wsFederationOptions.Events = new CookieWithSTSTokenMatchingAuthWsFederationEvents();
             })
 
             .AddCookie(cookieOptions =>
@@ -35,7 +34,7 @@ namespace ApiWithAdfsAuth.SetupVariants
         }
     }
 
-    public sealed class CookieWithSTSTokenMatchingAuthEventsWsFederationEvents : DebugWsFederationEvents
+    public sealed class CookieWithSTSTokenMatchingAuthWsFederationEvents : DebugWsFederationEvents
     {
         public override Task SecurityTokenValidated(SecurityTokenValidatedContext context)
         {
