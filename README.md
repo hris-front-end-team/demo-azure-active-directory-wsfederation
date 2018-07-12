@@ -92,13 +92,13 @@ Authentication flow looks like this:
 
 ##### Notes
 
-\* Authentication/authorization can be controlled by `[Microsoft.AspNetCore.Authorization.Authorize()]` attribute.
+\* (`II`) Authentication/authorization can be controlled by `[Microsoft.AspNetCore.Authorization.Authorize()]` attribute.
 
-† By default, the authentication cookie's name is `.AspNetCore.Cookies`. It is is possible to configure a different name (`cookieOptions.Cookie.Name`).
+† (`IV`) By default, the authentication cookie's name is `.AspNetCore.Cookies`. It is is possible to configure a different name (`cookieOptions.Cookie.Name`).
 
-‡ If _sliding expiration_ is configured, there's an extra bit of logic. A new cookie with a new expiration time is re-issued if a request happened at moment which is more than halfway through the expiration window.
+‡ (`VI`) If _sliding expiration_ is configured, there's an extra bit of logic. A new cookie with a new expiration time is re-issued if a request happened at moment which is more than halfway through the expiration window.
 
-§ By default, the ADFS redirects to `/signin-wsfed` location of the web service. This location is configurable (a setting in ADFS **AND** a matching value in `wsFederationOptions.CallbackPath`). The location is handled by `WsFederation`'s middleware automatically.
+§ (`XII`) By default, the ADFS redirects to `/signin-wsfed` location of the web service. This location is configurable (a setting in ADFS **AND** a matching value in `wsFederationOptions.CallbackPath`). The location is handled by `WsFederation`'s middleware automatically.
 
 ### Variant 1
 
