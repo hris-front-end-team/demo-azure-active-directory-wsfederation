@@ -26,6 +26,13 @@ The following resources are strongly recommended for looking at if you're new to
 * [.NET Core Docs: Use cookie authentication without ASP.NET Core Identity](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/cookie?view=aspnetcore-2.1&tabs=aspnetcore2x)
 * [StackOverflow: WsFederation & token sliding expiration](https://stackoverflow.com/a/28631956/482868)
 
+#### Setting Azure AD
+
+* [Registering an Application with Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications#adding-an-application)
+* [Original repository's (`WebApp-WSFederation-DotNet`) notes](https://github.com/hris-front-end-team/demo-azure-active-directory-wsfederation/blob/master/ORIGINAL_MICROSOFT_README.md#step-2--register-the-sample-with-your-azure-active-directory-tenant)
+
+TODO
+
 #### Version
 
 The solution is tested against .NET Core 2.1 (SDK/CLI) from MS Visual Studio Community Edition 2017 (`v15.3.4`).
