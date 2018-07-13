@@ -189,6 +189,8 @@ Just copy-paste the value and click "Decode".
 ![Create app in Adure AD](images/1_AD_create_app.png)
 ![Finalize app creation in Adure AD](images/2_AD_finalize_app_creation.png)
 
+* For the Sign On URL you can use anything, but default value is `https://localhost:44320/`.
+
 ### Grab `MetadataAddress` parameter
 
 ![MetadataAddress](images/3_AD_metadata_address.png)
@@ -197,3 +199,4 @@ Just copy-paste the value and click "Decode".
 
 ![Wtrealm](images/4_AD_wtrealm.png)
 
+* Do not forget to set the callback URL, default value to be `http://localhost:5000/signin-wsfed`.
