@@ -182,3 +182,19 @@ There are plenty of online tools such as [base64decode.org](https://www.base64de
 Just copy-paste the value and click "Decode".
 
 ![Decoding base64 strings](images/3_base64_decoder.png)
+
+## Appendix 1: Setting up Azure AD
+
+### Register Service as Application in Azure AD
+
+![Create app in Adure AD](images/1_AD_create_app.png)
+![Finalize app creation in Adure AD](images/2_AD_finalize_app_creation.png)
+
+### Grab `MetadataAddress` parameter
+
+![MetadataAddress](images/3_AD_metadata_address.png)
+
+### Grab `Wtrealm` parameter
+
+![Wtrealm](images/4_AD_wtrealm.png)
+
