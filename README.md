@@ -28,10 +28,9 @@ The following resources are strongly recommended for looking at if you're new to
 
 #### Setting Azure AD
 
+* [**STEP-BY-STEP Screenshots**](https://github.com/hris-front-end-team/demo-azure-active-directory-wsfederation/blob/master/README.md#appendix-1-setting-up-azure-ad)
 * [Registering an Application with Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications#adding-an-application)
 * [Original repository's (`WebApp-WSFederation-DotNet`) notes](https://github.com/hris-front-end-team/demo-azure-active-directory-wsfederation/blob/master/ORIGINAL_MICROSOFT_README.md#step-2--register-the-sample-with-your-azure-active-directory-tenant)
-
-TODO
 
 #### Version
 
