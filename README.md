@@ -122,9 +122,13 @@ Authentication flow looks like this:
 
 1. Sign in when prompted.
 
-1. Observe the response from the WebAPI. It should say the GMT/UTC time in the response body.
+    User name: `john.doe@soloydenkogmail.onmicrosoft.com`
 
-1. Inspect the cookies set for `localhost`.
+    Password: `M@m@M1@!`
+
+2. Observe the response from the WebAPI. It should say the GMT/UTC time in the response body.
+
+3. Inspect the cookies set for `localhost`.
 
 When switching between the demo variants, it's recommended to close browser and manually delete the remaining `localhost` cookies to ensure a "clean" run.
 
