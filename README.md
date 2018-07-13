@@ -70,8 +70,8 @@ When a Web Service's API is invoked (from a web browser context) the following l
         (VII) If authorization rules ARE met, the service's API code gets executed and the result is returned
               in an HTTP Response.
 
-        (VII) If authorization rules are NOT met, by default, HTTP 403 Forbidden Response is sent back,
-              but things may vary -- alternatives will not be described here in detail.
+        (VIII) If authorization rules are NOT met, by default, HTTP 403 Forbidden Response is sent back,
+               but things may vary -- alternatives will not be described here in detail.
 
       (IX) If authentication cookie is NOT found or HAS expired, by default, the authentication flow triggers,
            after which a redirection to the requested resource will happen (now with the unexpired authentication
