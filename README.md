@@ -1,4 +1,4 @@
-# demo-azure-active-directory-wsfederation
+# Demo: Azure Active Directory for WsFederation
 
 ## `WebApp-WSFederation-DotNet.sln`
 
