@@ -100,14 +100,74 @@ Authentication flow looks like this:
 
 § (`XII`) By default, the ADFS redirects to `/signin-wsfed` location of the web service. This location is configurable (a setting in ADFS **AND** a matching value in `wsFederationOptions.CallbackPath`). The location is handled by `WsFederation`'s middleware automatically.
 
-### Variant 1
+### Running the project
 
-TODO
+1. Navigate to `ApiWithAdfsAuth` directory.
 
-### Variant 2
+    ```sh
+    cd active-directory-dotnet-webapp-wsfederation/ApiWithAdfsAuth
+    ```
 
-TODO
+1. A standard `dotnet restore` may or may not be necessary.
 
-### Variant 3
+1. Start the service. Don't forget to specify the variant parameter.
 
-TODO
+    ```sh
+    dotnet run --VariantNameKey=Variant1
+    ```
+
+1. Start a web browser and open its developer tools.
+
+1. Navigate to `http://localhost:5000/demo/authenticated-date-time`.
+
+1. Sign in when prompted.
+
+1. Observe the response from the WebAPI. It should say the GMT/UTC time in the response body.
+
+1. Inspect the cookies set for `localhost`.
+
+When switching between the demo variants, it's recommended to close browser and manually delete the remaining `localhost` cookies to ensure a "clean" run.
+
+### Variant 1 – Fixed short cookie expiration time
+
+* Sets the **Cookie's** (not the STS token's!) expiration time to one minute on successful sign in.
+* No sliding expiration is configured.
+* Notice that cookie expiration is set from `SigningIn(CookieSigningInContext context)` and not elsewhere by assigning a value to `context.CookieOptions.Expires`.
+
+Observe behavior: After one minute of successful sign in the cookie will expire and the next API call will result in another redirection to Identity Provider.
+
+### Variant 2 – Fixed STS-token matching cookie expiration time
+
+* Sets the **Cookie's** expiration time to exactly match the STS token's expiration time.
+* No sliding expiration is configured.
+
+Observe behavior: Similar to variant 1, but with a different (STS token-driven) time span matching.
+
+### Variant 3 – Sliding expiration time via session cookie
+
+* Sets the sliding expiration.
+* The STS Token's expiration time is essentially overriden by Cookie auth middleware.
+* The Auth cookie's expiration time is browser session long (cookie lives until browser gets closed).
+* The expiration window slides whenever a request to an Authorized API is made _after_ less than half of the expiration window is remaining.
+
+Observe behavior: the session is maintained after a successful sign in for as long as the requests to authorized WebAPI are frequent enough.
+
+**IMPORTANT**: Make sure your browser does not have the "Restore tabs" feature enabled as it will interfere during the testing.
+
+### What to inspect
+
+#### Redirection to Azure Active Directory SignIn page
+
+![Redirection to SignIn](images/1_redirection_to_sign_in.png)
+
+#### WebAPI results & Created cookies
+
+![WebAPI results & Created cookies](images/2_web_api-response.png)
+
+#### Decoding base64 strings
+
+To restore the base64 value of an encrypted STS token, use a tool of your choice.
+There are plenty of online tools such as [base64decode.org](https://www.base64decode.org).
+Just copy-paste the value and click "Decode".
+
+![Decoding base64 strings](images/3_base64_decoder.png)
